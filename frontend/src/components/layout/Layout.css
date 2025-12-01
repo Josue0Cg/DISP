@@ -1,0 +1,183 @@
+.layout {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+    background-color: var(--color-background);
+}
+
+/* Sidebar Styling */
+.sidebar {
+    width: 280px;
+    background-color: var(--color-background);
+    color: var(--color-text-main);
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid var(--color-border);
+    transition: transform var(--transition-normal);
+    z-index: 50;
+}
+
+.sidebar-header {
+    height: 120px;
+    /* Taller header for pattern */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.sidebar-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.9;
+}
+
+.brand {
+    position: relative;
+    z-index: 10;
+    font-size: var(--font-size-2xl);
+    font-weight: 800;
+    color: var(--color-text-inverted);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: var(--spacing-2) var(--spacing-4);
+    border-radius: var(--radius-md);
+    backdrop-filter: blur(4px);
+}
+
+.nav-links {
+    flex: 1;
+    padding: var(--spacing-6) var(--spacing-4);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2);
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    padding: var(--spacing-3) var(--spacing-4);
+    border-radius: var(--radius-lg);
+    color: var(--color-text-muted);
+    text-decoration: none;
+    transition: all var(--transition-fast);
+    font-weight: 600;
+    font-size: var(--font-size-base);
+}
+
+.nav-item:hover {
+    background-color: var(--color-surface);
+    color: var(--color-primary);
+}
+
+.nav-item.active {
+    background-color: var(--color-primary);
+    color: var(--color-text-inverted);
+    box-shadow: var(--shadow-md);
+}
+
+/* Main Content Styling */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-surface);
+    overflow: hidden;
+    position: relative;
+}
+
+.header {
+    height: 72px;
+    background-color: var(--color-background);
+    border-bottom: 1px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 var(--spacing-8);
+    box-shadow: var(--shadow-sm);
+}
+
+.header-title {
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    color: var(--color-text-main);
+    background: linear-gradient(to right, var(--color-primary), var(--color-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-3);
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--color-accent-1), var(--color-accent-2));
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-inverted);
+    font-weight: 700;
+    font-size: var(--font-size-base);
+    box-shadow: var(--shadow-sm);
+}
+
+.page-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: var(--spacing-8);
+}
+
+/* Mobile Responsiveness */
+.mobile-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--color-text-main);
+    cursor: pointer;
+    margin-right: var(--spacing-4);
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        transform: translateX(-100%);
+        box-shadow: var(--shadow-lg);
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+    }
+
+    .mobile-toggle {
+        display: block;
+    }
+
+    .header {
+        padding: 0 var(--spacing-4);
+        justify-content: flex-start;
+    }
+
+    .header-title {
+        flex: 1;
+        text-align: center;
+        font-size: var(--font-size-lg);
+    }
+
+    .page-content {
+        padding: var(--spacing-4);
+    }
+}
