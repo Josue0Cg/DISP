@@ -1,16 +1,23 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import Clock from '../Clock';
 import './Layout.css';
 
-const Header = ({ onToggleSidebar }) => {
+const Header = () => {
     return (
         <header className="header">
-            <button className="mobile-toggle" onClick={onToggleSidebar}>
-                ☰
-            </button>
-            <h2 className="header-title">Dashboard</h2>
-            <div className="user-profile">
-                <div className="avatar">AD</div>
-                <span style={{ display: 'none', '@media (min-width: 768px)': { display: 'block' } }}>Admin</span>
+            <div className="header-left">
+                <h2 className="header-title">DISP Dashboard</h2>
+                <nav className="top-nav">
+                    <Link to="/" className="nav-link">Nueva Dispersión</Link>
+                    <Link to="/history" className="nav-link">Historial</Link>
+                </nav>
+            </div>
+            <div className="header-right">
+                <Clock />
+                <div className="user-profile">
+                    <div className="avatar">AD</div>
+                </div>
             </div>
         </header>
     );
